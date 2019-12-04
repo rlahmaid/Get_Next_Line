@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlahmaid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 11:10:57 by rlahmaid          #+#    #+#             */
-/*   Updated: 2019/12/04 12:41:40 by ahammani         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:35:36 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include <stdlib.h>
 #include<string.h>
 #include <fcntl.h>
@@ -50,7 +50,10 @@ int get_next_line(int fd, char **line)
 	int n;
 	char	*tmp;
 
-	n = ft_readline(fd, &gard);
+	if (!gard)
+		gard = ft_strdup("");
+	if ((n = ft_readline(fd, &gard)) < 0)
+		return (-1);
 	if ((s = ft_strchr(gard, '\n')))
     {
         *line = ft_strndup(gard, s - gard);
@@ -65,7 +68,6 @@ int get_next_line(int fd, char **line)
 		*line = ft_strdup(gard);
 		free(gard);
 		gard = NULL;
-		return (0);
 	}
 	return 0;
 }

@@ -6,8 +6,8 @@ int main()
 	int fd;
 	int n;
 	char *line;
-	fd = open("./Get_Next_Line_Tester/test/normal.txt",O_RDONLY);
-    //fd = open("t.txt", O_RDONLY);
+	//fd = open("./Get_Next_Line_Tester/test/normal.txt",O_RDONLY);
+    fd = open("t.txt", O_RDONLY);
 	//fd = 10;
 	while((n = get_next_line(fd, &line)) >= 0)
 	{
